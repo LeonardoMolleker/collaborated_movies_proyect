@@ -1,5 +1,5 @@
 abstract class Bloc {
-  Future<void> initialize();
+  void initialize();
 
   void dispose();
 }

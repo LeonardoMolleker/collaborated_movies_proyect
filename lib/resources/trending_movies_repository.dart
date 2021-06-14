@@ -1,8 +1,9 @@
-import '../models/item_model.dart';
+import '../models/movie_model.dart';
 import 'trending_movies_api_provider.dart';
 
-class TrendingMoviesRepository{
+class TrendingMoviesRepository {
   final trendingMoviesApiProvider = TrendingMoviesApiProvider();
 
-  Future<ItemModel> fetchTrendingMovies() => trendingMoviesApiProvider.fetchTrendingMovies();
+  Future<MovieModel> fetchTrendingMovies() =>
+      trendingMoviesApiProvider.fetchTrendingMovies();
 }

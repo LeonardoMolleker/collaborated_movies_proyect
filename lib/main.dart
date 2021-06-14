@@ -19,12 +19,16 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Hello world"),
+      child: Text(
+        "Hello world",
+      ),
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'dart:async';
 import '../resources/trending_movies_repository.dart';
 import '../interfaces/ITrendingMoviesBloc.dart';
-import '../models/item_model.dart';
+import '../models/movie_model.dart';
 
 class TrendingMoviesBloc extends ITrendingMovies {
   final trendingMoviesRepository = TrendingMoviesRepository();
-  StreamController<ItemModel> movieStream = StreamController();
+  StreamController<MovieModel> movieStream = StreamController();
 
   @override
   void dispose() {
@@ -21,8 +21,8 @@ class TrendingMoviesBloc extends ITrendingMovies {
   }
 
   @override
-  Future<void> initialize() {}
+  void initialize() {}
 
   @override
-  Stream<ItemModel> get stream => movieStream.stream;
+  Stream<MovieModel> get stream => movieStream.stream;
 }

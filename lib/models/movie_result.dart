@@ -1,40 +1,4 @@
-class ItemModel {
-  int _page;
-  int _totalPages;
-  int _totalResults;
-  List<Result> _results;
-
-  ItemModel.fromJson(
-    Map<String, dynamic> json,
-  ) {
-    _page = json["page"];
-    _totalPages = json["total_pages"];
-    _totalResults = json["total_results"];
-    _results = [];
-    for (var i = 0; i < json["results"].length; i++) {
-      _results.add(
-        Result(
-          json["results"][i],
-        ),
-      );
-    }
-  }
-
-  List<Result> get results => _results;
-
-  int get totalResults => _totalResults;
-
-  int get totalPages => _totalPages;
-
-  int get page => _page;
-
-  @override
-  String toString() {
-    return 'ItemModel{_page: $_page, _totalPages: $_totalPages, _totalResults: $_totalResults, _results: $_results}';
-  }
-}
-
-class Result {
+class MovieResult {
   int _voteCount;
   int _id;
   bool _video;
@@ -50,7 +14,7 @@ class Result {
   String _overview;
   String _releaseDate;
 
-  Result(
+  MovieResult(
     result,
   ) {
     _voteCount = result["vote_count"];

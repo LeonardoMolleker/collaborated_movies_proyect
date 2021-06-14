@@ -1,23 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../constants/constants.dart';
-import '../models/item_model.dart';
+import '../constants/uri_constants.dart';
+import '../models/movie_model.dart';
 
 class TrendingMoviesApiProvider {
-  final String _endpoint = "/trending/movie/week";
-
-  Future<ItemModel> fetchTrendingMovies() async {
+  Future<MovieModel> fetchTrendingMovies() async {
     final response = await http.get(
       Uri.parse(
-        Constants.uri + _endpoint,
+        UriConstants.uri + UriConstants.trendingMoviesEndpoint,
       ),
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": Constants.apiToken,
+        "Content-Type": UriConstants.contentType,
+        "Authorization": UriConstants.apiToken,
       },
     );
     if (response.statusCode == 200) {
-      return ItemModel.fromJson(
+      return MovieModel.fromJson(
         json.decode(response.body),
       );
     } else {
