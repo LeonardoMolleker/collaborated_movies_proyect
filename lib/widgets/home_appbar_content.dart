@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../constants/uri_constants.dart';
+import '../constants/string_constants.dart';
 import '../constants/measures_constants.dart';
 
 class HomeAppBarContent extends StatelessWidget {
   final String srcImage;
 
   HomeAppBarContent({
-    this.srcImage = UriConstants.defaultLogo,
+    this.srcImage = StringConstants.defaultLogo,
   });
 
   @override

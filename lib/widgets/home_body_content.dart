@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/measures_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
-import '../constants/uri_constants.dart';
+import '../constants/string_constants.dart';
 
 class HomeBodyContent extends StatelessWidget {
   final TrendingMoviesBloc bloc;
@@ -42,15 +42,20 @@ class HomeBodyContent extends StatelessWidget {
   }
 
   List<Widget> buildList(AsyncSnapshot snapshot) {
-    return List.generate(snapshot.data.results.length, (index) {
-      return Card(
-        shadowColor: Colors.white,
-        elevation: MeasuresConstants.cardElevation,
-        child: Image.network(
-          UriConstants.uriPosterImage + snapshot.data.results[index].posterPath,
-          fit: BoxFit.cover,
-        ),
-      );
-    });
+    if (snapshot.hasData) {
+      return List.generate(snapshot.data.results.length, (index) {
+        return Card(
+          shadowColor: Colors.white,
+          elevation: MeasuresConstants.cardElevation,
+          child: FadeInImage.assetNetwork(
+            image: StringConstants.uriPosterImage +
+                snapshot.data.results[index].posterPath,
+            placeholder: StringConstants.defaultLoaderGif,
+            fit: BoxFit.cover,
+          ),
+        );
+      });
+    }
+    return [];
   }
 }

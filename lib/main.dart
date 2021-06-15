@@ -18,7 +18,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _blocs.add(TrendingMoviesBloc());
+    _blocs.add(
+      TrendingMoviesBloc(),
+    );
     _blocs.forEach((bloc) {
       bloc.initialize();
     });
