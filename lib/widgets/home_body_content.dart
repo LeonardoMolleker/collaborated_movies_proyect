@@ -48,22 +48,11 @@ class HomeBodyContent extends StatelessWidget {
         color: Colors.black,
         shadowColor: Colors.white,
         elevation: MeasuresConstants.cardElevation,
-        child: Image.network(
-          StringConstants.uriPosterImage +
+        child: FadeInImage.assetNetwork(
+          placeholder: StringConstants.defaultPoster,
+          image : StringConstants.uriPosterImage +
               snapshot.data.results[index].posterPath,
           fit: BoxFit.cover,
-          loadingBuilder: (
-            BuildContext context,
-            Widget child,
-            ImageChunkEvent loadingProgress,
-          ) {
-            if (loadingProgress == null) {
-              return child;
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          },
         ),
       );
     });
