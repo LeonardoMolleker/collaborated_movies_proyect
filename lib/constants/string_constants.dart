@@ -6,5 +6,4 @@ abstract class StringConstants {
   static const String trendingMoviesEndpoint = "/trending/movie/week";
   static const String uriPosterImage = "https://image.tmdb.org/t/p/original";
   static const String defaultLogo = "assets/tmdb_logo.png";
-  static const String defaultLoaderGif = "assets/loader.gif";
 }

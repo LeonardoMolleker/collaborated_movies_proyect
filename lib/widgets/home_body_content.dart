@@ -26,36 +26,46 @@ class HomeBodyContent extends StatelessWidget {
         context,
         snapshot,
       ) {
-        return Container(
-          color: Colors.black,
-          child: GridView.count(
-            mainAxisSpacing: mainAxisSpacement,
-            childAspectRatio: childAspectRatio,
-            crossAxisCount: crossAxisCount,
-            children: buildList(
-              snapshot,
-            ),
-          ),
-        );
+        return snapshot.hasData
+            ? GridView.count(
+                mainAxisSpacing: mainAxisSpacement,
+                childAspectRatio: childAspectRatio,
+                crossAxisCount: crossAxisCount,
+                children: buildList(
+                  snapshot,
+                ),
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              );
       },
     );
   }
 
   List<Widget> buildList(AsyncSnapshot snapshot) {
-    if (snapshot.hasData) {
-      return List.generate(snapshot.data.results.length, (index) {
-        return Card(
-          shadowColor: Colors.white,
-          elevation: MeasuresConstants.cardElevation,
-          child: FadeInImage.assetNetwork(
-            image: StringConstants.uriPosterImage +
-                snapshot.data.results[index].posterPath,
-            placeholder: StringConstants.defaultLoaderGif,
-            fit: BoxFit.cover,
-          ),
-        );
-      });
-    }
-    return [];
+    return List.generate(snapshot.data.results.length, (index) {
+      return Card(
+        color: Colors.black,
+        shadowColor: Colors.white,
+        elevation: MeasuresConstants.cardElevation,
+        child: Image.network(
+          StringConstants.uriPosterImage +
+              snapshot.data.results[index].posterPath,
+          fit: BoxFit.cover,
+          loadingBuilder: (
+            BuildContext context,
+            Widget child,
+            ImageChunkEvent loadingProgress,
+          ) {
+            if (loadingProgress == null) {
+              return child;
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        ),
+      );
+    });
   }
 }

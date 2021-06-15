@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'bloc/trending_movies_bloc.dart';
-import 'interfaces/bloc.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -13,34 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _blocs = <Bloc>[];
-
-  @override
-  void initState() {
-    super.initState();
-    _blocs.add(
-      TrendingMoviesBloc(),
-    );
-    _blocs.forEach((bloc) {
-      bloc.initialize();
-    });
-  }
-
-  @override
-  void dispose() {
-    _blocs.forEach((bloc) {
-      bloc.dispose();
-    });
-    super.dispose();
-  }
-
-  T getDesireBloc<T extends Bloc>() {
-    return _blocs.firstWhere(
-      (bloc) {
-        return (bloc is T);
-      },
-    );
-  }
+  final _bloc = TrendingMoviesBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +23,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Home(
-        bloc: getDesireBloc<TrendingMoviesBloc>(),
+        bloc: _bloc,
       ),
     );
   }
