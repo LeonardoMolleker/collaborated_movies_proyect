@@ -6,4 +6,9 @@ class TrendingMoviesRepository {
 
   Future<MovieModel> fetchTrendingMovies() =>
       trendingMoviesApiProvider.fetchTrendingMovies();
+
+  Future<MovieModel> searchMovies(String query) =>
+      trendingMoviesApiProvider.searchMovies(
+        query,
+      );
 }

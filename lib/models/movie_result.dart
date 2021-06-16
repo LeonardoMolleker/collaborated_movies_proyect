@@ -20,9 +20,9 @@ class MovieResult {
     _voteCount = result["vote_count"];
     _id = result["id"];
     _video = result["video"];
-    _voteAverage = result['vote_average'];
+    _voteAverage = result['vote_average'].toDouble();
     _title = result['title'];
-    _popularity = result['popularity'];
+    _popularity = result['popularity'].toDouble();
     _posterPath = result['poster_path'];
     _originalLanguage = result['original_language'];
     _originalTitle = result['original_title'];
