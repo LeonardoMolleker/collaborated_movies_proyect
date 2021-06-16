@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../models/movie_result.dart';
+import '../pages/movie_details_page.dart';
 import '../constants/measures_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
 import '../constants/string_constants.dart';
@@ -32,6 +34,7 @@ class HomeBodyContent extends StatelessWidget {
                 childAspectRatio: childAspectRatio,
                 crossAxisCount: crossAxisCount,
                 children: buildList(
+                  context,
                   snapshot,
                 ),
               )
@@ -42,21 +45,42 @@ class HomeBodyContent extends StatelessWidget {
     );
   }
 
-  List<Widget> buildList(AsyncSnapshot snapshot) {
+  List<Widget> buildList(BuildContext context, AsyncSnapshot snapshot) {
     return List.generate(snapshot.data.results.length, (index) {
-      return Card(
-        color: Colors.black,
-        shadowColor: Colors.white,
-        elevation: MeasuresConstants.cardElevation,
-        child: FadeInImage.assetNetwork(
-          placeholder: StringConstants.defaultPoster,
-          image: snapshot.data.results[index].posterPath != null
-              ? StringConstants.uriPosterImage +
-                  snapshot.data.results[index].posterPath
-              : StringConstants.defaultPoster,
-          fit: BoxFit.cover,
+      return InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (
+                context,
+              ) =>
+                  MovieDetailPage(
+                result: snapshot.data.results[index],
+                functionGetImage: getImage,
+              ),
+            ),
+          );
+        },
+        child: Card(
+          color: Colors.black,
+          shadowColor: Colors.white,
+          elevation: MeasuresConstants.cardElevation,
+          child: getImage(
+            snapshot.data.results[index],
+          ),
         ),
       );
     });
+  }
+
+  FadeInImage getImage(MovieResult result) {
+    return FadeInImage.assetNetwork(
+      placeholder: StringConstants.defaultPoster,
+      image: result.posterPath != null
+          ? StringConstants.uriPosterImage + result.posterPath
+          : StringConstants.defaultPoster,
+      fit: BoxFit.cover,
+    );
   }
 }

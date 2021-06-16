@@ -11,4 +11,8 @@ abstract class StringConstants {
   static const String textFieldLabel = "Search movies";
   static const String exceptionText = "Failed to get data";
   static const String emptyString = "";
+  static const String movieDetailLanguage = "Language: ";
+  static const String movieDetailDate = " - Date: ";
+  static const String movieDetailRating = " - Rating: ";
+  static const String playButtonText = "Play";
 }
