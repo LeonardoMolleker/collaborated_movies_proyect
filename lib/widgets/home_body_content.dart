@@ -50,8 +50,10 @@ class HomeBodyContent extends StatelessWidget {
         elevation: MeasuresConstants.cardElevation,
         child: FadeInImage.assetNetwork(
           placeholder: StringConstants.defaultPoster,
-          image : StringConstants.uriPosterImage +
-              snapshot.data.results[index].posterPath,
+          image: snapshot.data.results[index].posterPath != null
+              ? StringConstants.uriPosterImage +
+                  snapshot.data.results[index].posterPath
+              : StringConstants.defaultPoster,
           fit: BoxFit.cover,
         ),
       );

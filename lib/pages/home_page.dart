@@ -22,15 +22,54 @@ class Home extends StatelessWidget {
         preferredSize: Size.fromHeight(
           MeasuresConstants.appBarHeight,
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: MeasuresConstants.logoPaddingTop,
-          ),
-          child: Image.asset(
-            srcImage,
-            height: MeasuresConstants.logoHeight,
-            width: MeasuresConstants.logoWidth,
-          ),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: MeasuresConstants.logoPaddingTop,
+              ),
+              child: Image.asset(
+                srcImage,
+                height: MeasuresConstants.logoHeight,
+                width: MeasuresConstants.logoWidth,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: MeasuresConstants.textFieldPaddingTop,
+                left: MeasuresConstants.textFieldPaddingLeft,
+              ),
+              child: SizedBox(
+                child: TextField(
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.only(
+                        right: MeasuresConstants.rightPaddingTexFieldIcon,
+                      ),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                  onSubmitted: (value) {
+                    bloc.searchMovies(value);
+                  },
+                ),
+                width: MeasuresConstants.textFieldSixedBoxWidth,
+                height: MeasuresConstants.textFieldSixedBoxHeight,
+              ),
+            )
+          ],
         ),
       ),
       body: HomeBodyContent(
