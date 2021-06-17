@@ -74,13 +74,16 @@ class HomeBodyContent extends StatelessWidget {
     });
   }
 
-  FadeInImage getImage(MovieResult result) {
-    return FadeInImage.assetNetwork(
-      placeholder: StringConstants.defaultPoster,
-      image: result.posterPath != null
-          ? StringConstants.uriPosterImage + result.posterPath
-          : StringConstants.defaultPoster,
-      fit: BoxFit.cover,
+  Hero getImage(MovieResult result) {
+    return Hero(
+      tag: StringConstants.heroMovieDetailTransitionTag + result.id.toString(),
+      child: FadeInImage.assetNetwork(
+        placeholder: StringConstants.defaultPoster,
+        image: result.posterPath != null
+            ? StringConstants.uriPosterImage + result.posterPath
+            : StringConstants.defaultPoster,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

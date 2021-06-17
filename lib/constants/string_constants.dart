@@ -15,4 +15,5 @@ abstract class StringConstants {
   static const String movieDetailDate = " - Date: ";
   static const String movieDetailRating = " - Rating: ";
   static const String playButtonText = "Play";
+  static const String heroMovieDetailTransitionTag = "movieImage";
 }
