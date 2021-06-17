@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/movie_result.dart';
 import '../pages/movie_details_page.dart';
 import '../constants/measures_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
@@ -66,24 +65,29 @@ class HomeBodyContent extends StatelessWidget {
           color: Colors.black,
           shadowColor: Colors.white,
           elevation: MeasuresConstants.cardElevation,
-          child: getImage(
-            snapshot.data.results[index],
+          child: Hero(
+            tag: StringConstants.heroMovieDetailTransitionTag + snapshot.data.results[index].id.toString(),
+            child: getImage(
+              posterPath: snapshot.data.results[index].posterPath,
+              id: snapshot.data.results[index].id.toString(),
+            ),
           ),
         ),
       );
     });
   }
 
-  Hero getImage(MovieResult result) {
-    return Hero(
-      tag: StringConstants.heroMovieDetailTransitionTag + result.id.toString(),
-      child: FadeInImage.assetNetwork(
-        placeholder: StringConstants.defaultPoster,
-        image: result.posterPath != null
-            ? StringConstants.uriPosterImage + result.posterPath
-            : StringConstants.defaultPoster,
-        fit: BoxFit.cover,
-      ),
+  FadeInImage getImage({
+    String posterPath,
+    String defaultPath = StringConstants.defaultPoster,
+    String id,
+  }) {
+    return FadeInImage.assetNetwork(
+      placeholder: defaultPath,
+      image: posterPath != null
+          ? StringConstants.uriPosterImage + posterPath
+          : defaultPath,
+      fit: BoxFit.cover,
     );
   }
 }

@@ -21,7 +21,7 @@ abstract class MeasuresConstants {
   static const double movieDetailInfoBottomPadding = 10.0;
   static const double movieDetailInfoWordSpacing = 5.0;
   static const double movieDetailInfoFontSize = 15.0;
-  static const double playButtonLeftRightPadding = 10.0;
+  static const double playButtonHorizontalPadding = 10.0;
   static const double movieDetailOverviewFontSize = 15.0;
   static const double movieDetailOverviewTopPadding = 5.0;
   static const double movieDetailOverviewLeftRightBottomPadding = 10.0;
