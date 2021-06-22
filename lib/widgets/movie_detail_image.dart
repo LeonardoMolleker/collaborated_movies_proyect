@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_movies/constants/string_constants.dart';
 import '../constants/measures_constants.dart';
 
 class MovieDetailImage extends StatelessWidget {
-  final String posterPath;
-  final String defaultPath;
+  final Widget image;
   final String heroTag;
 
   const MovieDetailImage({
     Key key,
-    this.posterPath,
-    this.defaultPath = StringConstants.defaultPoster,
+    this.image,
     this.heroTag,
   }) : super(key: key);
 
@@ -21,13 +18,7 @@ class MovieDetailImage extends StatelessWidget {
       child: Container(
         height: MeasuresConstants.movieDetailContainerHeight,
         child: Center(
-          child: FadeInImage.assetNetwork(
-            placeholder: defaultPath,
-            image: posterPath != null
-                ? StringConstants.uriPosterImage + posterPath
-                : defaultPath,
-            fit: BoxFit.cover,
-          ),
+          child: image,
         ),
       ),
     );

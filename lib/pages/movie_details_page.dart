@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_movies/constants/string_constants.dart';
+import '../widgets/fade_image_widget.dart';
+import '../constants/string_constants.dart';
 import '../widgets/movie_detail_image.dart';
 import '../widgets/movie_detail_play_button.dart';
 import '../widgets/movie_details_actions.dart';
@@ -10,11 +11,9 @@ import '../models/movie_result.dart';
 
 class MovieDetailPage extends StatelessWidget {
   final MovieResult result;
-  final Function functionGetImage;
 
   MovieDetailPage({
     this.result,
-    this.functionGetImage,
   });
 
   @override
@@ -25,8 +24,11 @@ class MovieDetailPage extends StatelessWidget {
         child: Column(
           children: [
             MovieDetailImage(
-              posterPath: result.posterPath,
-              heroTag: StringConstants.heroMovieDetailTransitionTag + result.id.toString(),
+              image: FadeImageWidget(
+                posterPath: result.posterPath,
+              ),
+              heroTag: StringConstants.heroMovieDetailTransitionTag +
+                  result.id.toString(),
             ),
             MovieDetailsTitle(
               title: result.title,
