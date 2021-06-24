@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../constants/measures_constants.dart';
+import '../utils/measures_constants.dart';
 
 class MovieDetailsActions extends StatelessWidget {
   final double spacerSize;
   final List<Icon> icons;
 
   const MovieDetailsActions({
-    Key key,
+    Key? key,
     this.spacerSize = MeasuresConstants.movieDetailSixedBoxWidth,
     this.icons = const [
       Icon(

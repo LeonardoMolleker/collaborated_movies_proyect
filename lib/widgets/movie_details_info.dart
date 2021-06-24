@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/movie_result.dart';
-import '../constants/measures_constants.dart';
-import '../constants/string_constants.dart';
+import '../utils/measures_constants.dart';
+import '../utils/string_constants.dart';
 
 class MovieDetailsInfo extends StatelessWidget {
   final String language;
@@ -9,10 +8,10 @@ class MovieDetailsInfo extends StatelessWidget {
   final String rating;
 
   const MovieDetailsInfo({
-    Key key,
-    this.language,
-    this.date,
-    this.rating,
+    Key? key,
+    this.language = StringConstants.defaultLanguage,
+    this.date = StringConstants.defaultDate,
+    this.rating = StringConstants.defaultRating,
   }) : super(key: key);
 
   @override

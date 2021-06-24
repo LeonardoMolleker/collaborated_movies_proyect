@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../constants/measures_constants.dart';
-import '../constants/string_constants.dart';
+import '../utils/measures_constants.dart';
+import '../utils/string_constants.dart';
 import '../models/movie_model.dart';
 
 class TrendingMoviesApiProvider {

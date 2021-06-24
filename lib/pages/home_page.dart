@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../constants/string_constants.dart';
+import '../utils/string_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
-import '../constants/measures_constants.dart';
+import '../utils/measures_constants.dart';
 import '../widgets/home_body_content.dart';
 
 class Home extends StatelessWidget {
@@ -9,8 +9,8 @@ class Home extends StatelessWidget {
   final String srcImage;
 
   const Home({
-    Key key,
-    this.bloc,
+    Key? key,
+    required this.bloc,
     this.srcImage = StringConstants.defaultLogo,
   }) : super(key: key);
 

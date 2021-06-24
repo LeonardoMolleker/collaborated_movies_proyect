@@ -1,10 +1,10 @@
 import 'movie_result.dart';
 
 class MovieModel {
-  int _page;
-  int _totalPages;
-  int _totalResults;
-  List<MovieResult> _results;
+  late int _page;
+  late int _totalPages;
+  late int _totalResults;
+  late List<MovieResult> _results;
 
   MovieModel.fromJson(
     Map<String, dynamic> json,

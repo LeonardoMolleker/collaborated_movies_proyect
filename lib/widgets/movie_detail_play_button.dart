@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../constants/measures_constants.dart';
-import '../constants/string_constants.dart';
+import '../utils/measures_constants.dart';
+import '../utils/string_constants.dart';
 
 class MovieDetailPlayButton extends StatelessWidget {
   const MovieDetailPlayButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

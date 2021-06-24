@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/fade_image_widget.dart';
-import '../constants/string_constants.dart';
+import '../utils/string_constants.dart';
 import '../widgets/movie_detail_image.dart';
 import '../widgets/movie_detail_play_button.dart';
 import '../widgets/movie_details_actions.dart';
@@ -13,7 +13,7 @@ class MovieDetailPage extends StatelessWidget {
   final MovieResult result;
 
   MovieDetailPage({
-    this.result,
+    required this.result,
   });
 
   @override

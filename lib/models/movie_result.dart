@@ -1,18 +1,20 @@
+import '../utils/string_constants.dart';
+
 class MovieResult {
-  int _voteCount;
-  int _id;
-  bool _video;
-  double _voteAverage;
-  String _title;
-  double _popularity;
-  String _posterPath;
-  String _originalLanguage;
-  String _originalTitle;
-  List<int> _genreIds = [];
-  String _backdropPath;
-  bool _adult;
-  String _overview;
-  String _releaseDate;
+  late int _voteCount;
+  late int _id;
+  late bool _video;
+  late double _voteAverage;
+  late String _title;
+  late double _popularity;
+  late String _posterPath;
+  late String _originalLanguage;
+  late String _originalTitle;
+  late List<int> _genreIds = [];
+  String? _backdropPath;
+  late bool _adult;
+  late String _overview;
+  late String _releaseDate;
 
   MovieResult(
     result,
@@ -23,11 +25,13 @@ class MovieResult {
     _voteAverage = result['vote_average'].toDouble();
     _title = result['title'];
     _popularity = result['popularity'].toDouble();
-    _posterPath = result['poster_path'];
+    _posterPath = (result['poster_path'] != null)
+        ? result['poster_path']
+        : StringConstants.defaultPoster;
     _originalLanguage = result['original_language'];
     _originalTitle = result['original_title'];
     for (int i = 0; i < result['genre_ids'].length; i++) {
-      _genreIds.add(result['genre_ids'][i]);
+      _genreIds?.add(result['genre_ids'][i]);
     }
     _backdropPath = result['backdrop_path'];
     _adult = result['adult'];
@@ -41,7 +45,7 @@ class MovieResult {
 
   bool get adult => _adult;
 
-  String get backdropPath => _backdropPath;
+  String? get backdropPath => _backdropPath;
 
   List<int> get genreIds => _genreIds;
 
