@@ -1,70 +1,62 @@
-class MovieResult {
-  int _voteCount;
-  int _id;
-  bool _video;
-  double _voteAverage;
-  String _title;
-  double _popularity;
-  String _posterPath;
-  String _originalLanguage;
-  String _originalTitle;
-  List<int> _genreIds = [];
-  String _backdropPath;
-  bool _adult;
-  String _overview;
-  String _releaseDate;
+import '../utils/string_constants.dart';
 
-  MovieResult(
+class MovieResult {
+  late int voteCount;
+  late int id;
+  late bool video;
+  late double voteAverage;
+  late String title;
+  late double popularity;
+  late String posterPath;
+  late String originalLanguage;
+  late String originalTitle;
+  late List<int> genreIds = [];
+  String? backdropPath;
+  late bool adult;
+  late String overview;
+  late String releaseDate;
+
+  MovieResult({
+    required this.voteCount,
+    required this.id,
+    required this.video,
+    required this.voteAverage,
+    required this.title,
+    required this.popularity,
+    required this.posterPath,
+    required this.originalLanguage,
+    required this.originalTitle,
+    required this.genreIds,
+    this.backdropPath,
+    required this.adult,
+    required this.overview,
+    required this.releaseDate,
+  });
+
+  factory MovieResult.fromJson(
     result,
   ) {
-    _voteCount = result["vote_count"];
-    _id = result["id"];
-    _video = result["video"];
-    _voteAverage = result['vote_average'].toDouble();
-    _title = result['title'];
-    _popularity = result['popularity'].toDouble();
-    _posterPath = result['poster_path'];
-    _originalLanguage = result['original_language'];
-    _originalTitle = result['original_title'];
+    List<int> genreId = [];
     for (int i = 0; i < result['genre_ids'].length; i++) {
-      _genreIds.add(result['genre_ids'][i]);
+      genreId.add(result['genre_ids'][i]);
     }
-    _backdropPath = result['backdrop_path'];
-    _adult = result['adult'];
-    _overview = result['overview'];
-    _releaseDate = result['release_date'];
-  }
-
-  String get releaseDate => _releaseDate;
-
-  String get overview => _overview;
-
-  bool get adult => _adult;
-
-  String get backdropPath => _backdropPath;
-
-  List<int> get genreIds => _genreIds;
-
-  String get originalTitle => _originalTitle;
-
-  String get originalLanguage => _originalLanguage;
-
-  String get posterPath => _posterPath;
-
-  double get popularity => _popularity;
-
-  String get title => _title;
-
-  double get voteAverage => _voteAverage;
-
-  bool get video => _video;
-
-  int get id => _id;
-
-  int get voteCount => _voteCount;
-
-  @override
-  String toString() {
-    return 'Result{_voteCount: $_voteCount, _id: $_id, _video: $_video, _voteAverage: $_voteAverage, _title: $_title, _popularity: $_popularity, _posterPath: $_posterPath, _originalLanguage: $_originalLanguage, _originalTitle: $_originalTitle, _genreIds: $_genreIds, _backdropPath: $_backdropPath, _adult: $_adult, _overview: $_overview, _releaseDate: $_releaseDate}';
+    return MovieResult(
+      voteCount: result["vote_count"],
+      id: result["id"],
+      video: result["video"],
+      voteAverage: result['vote_average'].toDouble(),
+      title: result['title'],
+      popularity: result['popularity'].toDouble(),
+      posterPath: (result['poster_path'] != null)
+          ? StringConstants.uriPosterImage + result['poster_path']
+          : StringConstants.emptyString,
+      originalLanguage: result['original_language'],
+      originalTitle: result['original_title'],
+      genreIds: genreId,
+      backdropPath: result['backdrop_path'],
+      adult: result['adult'],
+      overview: result['overview'],
+      releaseDate: result['release_date'],
+    );
   }
 }

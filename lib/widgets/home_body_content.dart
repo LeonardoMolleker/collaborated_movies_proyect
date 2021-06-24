@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'fade_image_widget.dart';
+import 'cached_network_widget.dart';
 import '../pages/movie_details_page.dart';
-import '../constants/measures_constants.dart';
+import '../utils/measures_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
-import '../constants/string_constants.dart';
+import '../utils/string_constants.dart';
 
 class HomeBodyContent extends StatelessWidget {
   final TrendingMoviesBloc bloc;
@@ -12,8 +12,8 @@ class HomeBodyContent extends StatelessWidget {
   final double mainAxisSpacement;
 
   const HomeBodyContent({
-    Key key,
-    this.bloc,
+    Key? key,
+    required this.bloc,
     this.childAspectRatio = MeasuresConstants.defaultChildAspectRatio,
     this.crossAxisCount = MeasuresConstants.defaultCrossAxisCount,
     this.mainAxisSpacement = MeasuresConstants.gridMainAxisSpacement,
@@ -57,8 +57,8 @@ class HomeBodyContent extends StatelessWidget {
               ) =>
                   MovieDetailPage(
                 result: snapshot.data.results[index],
-                ),
               ),
+            ),
           );
         },
         child: Card(
@@ -68,8 +68,9 @@ class HomeBodyContent extends StatelessWidget {
           child: Hero(
             tag: StringConstants.heroMovieDetailTransitionTag +
                 snapshot.data.results[index].id.toString(),
-            child: FadeImageWidget(
-              posterPath: snapshot.data.results[index].posterPath,
+            child: CachedNetworkWidget(
+              posterPath: StringConstants.uriPosterImage +
+                  snapshot.data.results[index].posterPath,
             ),
           ),
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/fade_image_widget.dart';
-import '../constants/string_constants.dart';
+import '../widgets/cached_network_widget.dart';
+import '../utils/string_constants.dart';
 import '../widgets/movie_detail_image.dart';
-import '../widgets/movie_detail_play_button.dart';
+import '../widgets/movie_detail_back_button.dart';
 import '../widgets/movie_details_actions.dart';
 import '../widgets/movie_details_info.dart';
 import '../widgets/movie_details_overview.dart';
@@ -13,7 +13,7 @@ class MovieDetailPage extends StatelessWidget {
   final MovieResult result;
 
   MovieDetailPage({
-    this.result,
+    required this.result,
   });
 
   @override
@@ -24,7 +24,7 @@ class MovieDetailPage extends StatelessWidget {
         child: Column(
           children: [
             MovieDetailImage(
-              image: FadeImageWidget(
+              image: CachedNetworkWidget(
                 posterPath: result.posterPath,
               ),
               heroTag: StringConstants.heroMovieDetailTransitionTag +
@@ -38,7 +38,6 @@ class MovieDetailPage extends StatelessWidget {
               date: result.releaseDate,
               rating: result.voteAverage.toString(),
             ),
-            MovieDetailPlayButton(),
             MovieDetailsOverview(
               overview: result.overview,
             ),
@@ -46,6 +45,7 @@ class MovieDetailPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: MovieDetailBackButton(),
     );
   }
 }

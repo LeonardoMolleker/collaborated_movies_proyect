@@ -1,5 +1,5 @@
 import 'dart:async';
-import '../constants/string_constants.dart';
+import '../utils/string_constants.dart';
 import '../resources/trending_movies_repository.dart';
 import '../interfaces/ITrendingMoviesBloc.dart';
 import '../models/movie_model.dart';

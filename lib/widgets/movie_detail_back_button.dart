@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../constants/measures_constants.dart';
-import '../constants/string_constants.dart';
+import '../utils/measures_constants.dart';
+import '../utils/string_constants.dart';
 
-class MovieDetailPlayButton extends StatelessWidget {
-  const MovieDetailPlayButton({
-    Key key,
+class MovieDetailBackButton extends StatelessWidget {
+  const MovieDetailBackButton({
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -22,12 +22,14 @@ class MovieDetailPlayButton extends StatelessWidget {
                 Colors.white,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.play_arrow,
+              Icons.arrow_back,
               color: Colors.black,
             ),
             Text(

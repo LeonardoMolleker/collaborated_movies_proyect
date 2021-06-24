@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../constants/measures_constants.dart';
+import '../utils/string_constants.dart';
+import '../utils/measures_constants.dart';
 
 class MovieDetailsTitle extends StatelessWidget {
   final String title;
 
   const MovieDetailsTitle({
-    Key key,
-    this.title,
+    Key? key,
+    this.title = StringConstants.defaultTitle,
   }) : super(key: key);
 
   @override
