@@ -1,37 +1,39 @@
 import 'movie_result.dart';
 
 class MovieModel {
-  late int _page;
-  late int _totalPages;
-  late int _totalResults;
-  late List<MovieResult> _results;
+  late int page;
+  late int totalPages;
+  late int totalResults;
+  late List<MovieResult> results;
 
-  MovieModel.fromJson(
+  MovieModel({
+    required this.page,
+    required this.totalPages,
+    required this.totalResults,
+    required this.results,
+  });
+
+  factory MovieModel.fromJson(
     Map<String, dynamic> json,
   ) {
-    _page = json["page"];
-    _totalPages = json["total_pages"];
-    _totalResults = json["total_results"];
-    _results = [];
-    for (var i = 0; i < json["results"].length; i++) {
-      _results.add(
-        MovieResult(
-          json["results"][i],
+    List<MovieResult> results = [];
+    for (int i = 0; i < json['results'].length; i++) {
+      results.add(
+        MovieResult.fromJson(
+          json['results'][i],
         ),
       );
     }
+    return MovieModel(
+      page: json["page"],
+      totalPages: json["total_pages"],
+      totalResults: json["total_results"],
+      results: results,
+    );
   }
-
-  List<MovieResult> get results => _results;
-
-  int get totalResults => _totalResults;
-
-  int get totalPages => _totalPages;
-
-  int get page => _page;
 
   @override
   String toString() {
-    return 'ItemModel{_page: $_page, _totalPages: $_totalPages, _totalResults: $_totalResults, _results: $_results}';
+    return 'ItemModel{_page: $page, _totalPages: $totalPages, _totalResults: $totalResults, _results: $results}';
   }
 }

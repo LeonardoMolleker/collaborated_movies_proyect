@@ -1,21 +1,22 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../utils/string_constants.dart';
+import 'default_image_widget.dart';
 
 class FadeImageWidget extends StatelessWidget {
   final String posterPath;
 
   const FadeImageWidget({
     Key? key,
-    this.posterPath = StringConstants.defaultPoster,
-
+    required this.posterPath,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FadeInImage.assetNetwork(
-      placeholder: StringConstants.defaultPoster,
-      image: posterPath,
+    return CachedNetworkImage(
+      placeholder: (context, url) => DefaultImageWidget(),
+      imageUrl: posterPath,
       fit: BoxFit.cover,
+      errorWidget: (context, url, error) => DefaultImageWidget(),
     );
   }
 }

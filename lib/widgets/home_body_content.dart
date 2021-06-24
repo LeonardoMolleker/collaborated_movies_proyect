@@ -57,8 +57,8 @@ class HomeBodyContent extends StatelessWidget {
               ) =>
                   MovieDetailPage(
                 result: snapshot.data.results[index],
-                ),
               ),
+            ),
           );
         },
         child: Card(
@@ -69,7 +69,8 @@ class HomeBodyContent extends StatelessWidget {
             tag: StringConstants.heroMovieDetailTransitionTag +
                 snapshot.data.results[index].id.toString(),
             child: FadeImageWidget(
-              posterPath: snapshot.data.results[index].posterPath,
+              posterPath: StringConstants.uriPosterImage +
+                  snapshot.data.results[index].posterPath,
             ),
           ),
         ),
