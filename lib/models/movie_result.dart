@@ -59,9 +59,4 @@ class MovieResult {
       releaseDate: result['release_date'],
     );
   }
-
-  @override
-  String toString() {
-    return 'Result{_voteCount: $voteCount, _id: $id, _video: $video, _voteAverage: $voteAverage, _title: $title, _popularity: $popularity, _posterPath: $posterPath, _originalLanguage: $originalLanguage, _originalTitle: $originalTitle, _genreIds: $genreIds, _backdropPath: $backdropPath, _adult: $adult, _overview: $overview, _releaseDate: $releaseDate}';
-  }
 }

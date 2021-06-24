@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'fade_image_widget.dart';
+import 'cached_network_widget.dart';
 import '../pages/movie_details_page.dart';
 import '../utils/measures_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
@@ -68,7 +68,7 @@ class HomeBodyContent extends StatelessWidget {
           child: Hero(
             tag: StringConstants.heroMovieDetailTransitionTag +
                 snapshot.data.results[index].id.toString(),
-            child: FadeImageWidget(
+            child: CachedNetworkWidget(
               posterPath: StringConstants.uriPosterImage +
                   snapshot.data.results[index].posterPath,
             ),

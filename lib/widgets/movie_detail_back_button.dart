@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../utils/measures_constants.dart';
 import '../utils/string_constants.dart';
 
-class MovieDetailPlayButton extends StatelessWidget {
-  const MovieDetailPlayButton({
+class MovieDetailBackButton extends StatelessWidget {
+  const MovieDetailBackButton({
     Key? key,
   }) : super(key: key);
 

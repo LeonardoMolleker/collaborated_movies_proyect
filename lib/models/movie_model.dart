@@ -31,9 +31,4 @@ class MovieModel {
       results: results,
     );
   }
-
-  @override
-  String toString() {
-    return 'ItemModel{_page: $page, _totalPages: $totalPages, _totalResults: $totalResults, _results: $results}';
-  }
 }
