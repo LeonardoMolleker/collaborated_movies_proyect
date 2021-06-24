@@ -22,12 +22,14 @@ class MovieDetailPlayButton extends StatelessWidget {
                 Colors.white,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.play_arrow,
+              Icons.arrow_back,
               color: Colors.black,
             ),
             Text(

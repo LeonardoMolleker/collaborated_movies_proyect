@@ -38,7 +38,6 @@ class MovieDetailPage extends StatelessWidget {
               date: result.releaseDate,
               rating: result.voteAverage.toString(),
             ),
-            MovieDetailPlayButton(),
             MovieDetailsOverview(
               overview: result.overview,
             ),
@@ -46,6 +45,7 @@ class MovieDetailPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: MovieDetailPlayButton(),
     );
   }
 }

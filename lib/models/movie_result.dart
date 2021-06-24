@@ -48,7 +48,7 @@ class MovieResult {
       title: result['title'],
       popularity: result['popularity'].toDouble(),
       posterPath: (result['poster_path'] != null)
-          ? result['poster_path']
+          ? StringConstants.uriPosterImage + result['poster_path']
           : StringConstants.emptyString,
       originalLanguage: result['original_language'],
       originalTitle: result['original_title'],
