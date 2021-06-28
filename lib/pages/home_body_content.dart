@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'cached_network_widget.dart';
-import '../pages/movie_details_page.dart';
+import 'movie_details_page.dart';
 import '../utils/measures_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
 import '../utils/string_constants.dart';
+import 'package:exported_movie_widgets/src/movie_widgets.dart';
 
 class HomeBodyContent extends StatelessWidget {
   final TrendingMoviesBloc bloc;
@@ -65,13 +65,10 @@ class HomeBodyContent extends StatelessWidget {
           color: Colors.black,
           shadowColor: Colors.white,
           elevation: MeasuresConstants.cardElevation,
-          child: Hero(
-            tag: StringConstants.heroMovieDetailTransitionTag +
+          child: MovieDetailImage(
+            imagePath: snapshot.data.results[index].posterPath,
+            heroTag: StringConstants.heroMovieDetailTransitionTag +
                 snapshot.data.results[index].id.toString(),
-            child: CachedNetworkWidget(
-              posterPath: StringConstants.uriPosterImage +
-                  snapshot.data.results[index].posterPath,
-            ),
           ),
         ),
       );
