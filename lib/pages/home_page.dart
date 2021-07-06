@@ -4,7 +4,7 @@ import '../bloc/trending_movies_bloc.dart';
 import '../utils/measures_constants.dart';
 import 'home_body_content.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   final TrendingMoviesBloc bloc;
   final String srcImage;
 
@@ -13,6 +13,17 @@ class Home extends StatelessWidget {
     required this.bloc,
     this.srcImage = StringConstants.defaultLogo,
   }) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    widget.bloc.fetchTrendingMovies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +40,7 @@ class Home extends StatelessWidget {
                 top: MeasuresConstants.logoPaddingTop,
               ),
               child: Image.asset(
-                srcImage,
+                widget.srcImage,
                 height: MeasuresConstants.logoHeight,
                 width: MeasuresConstants.logoWidth,
               ),
@@ -62,7 +73,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   onSubmitted: (value) {
-                    bloc.searchMovies(value);
+                    widget.bloc.searchMovies(value);
                   },
                 ),
                 width: MeasuresConstants.textFieldSixedBoxWidth,
@@ -73,7 +84,7 @@ class Home extends StatelessWidget {
         ),
       ),
       body: HomeBodyContent(
-        bloc: bloc,
+        bloc: widget.bloc,
       ),
     );
   }

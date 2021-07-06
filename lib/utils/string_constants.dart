@@ -17,8 +17,10 @@ abstract class StringConstants {
   static const String playButtonText = "Go back";
   static const String heroMovieDetailTransitionTag = "movieImage";
   static const String defaultLanguage = "us";
-  static const String defaultDate = "03-24-2019";
+  static const String defaultDate = "2019-03-17";
   static const String defaultRating = "8.7";
   static const String defaultTitle = "No title";
   static const String defaultOverview = "none";
+  static const String exampleQuery = "cruella";
+  static const String defaultGoBackButtonText = "Go back";
 }

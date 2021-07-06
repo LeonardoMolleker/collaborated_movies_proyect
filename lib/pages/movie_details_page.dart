@@ -1,7 +1,7 @@
+import 'package:exported_movie_widgets/exported_movie_widgets.dart';
 import 'package:flutter/material.dart';
 import '../utils/string_constants.dart';
 import '../models/movie_result.dart';
-import 'package:exported_movie_widgets/src/movie_widgets.dart';
 
 class MovieDetailPage extends StatelessWidget {
   final MovieResult result;

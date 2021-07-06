@@ -5,8 +5,12 @@ import '../interfaces/ITrendingMoviesBloc.dart';
 import '../models/movie_model.dart';
 
 class TrendingMoviesBloc extends ITrendingMovies {
-  final trendingMoviesRepository = TrendingMoviesRepository();
+  final TrendingMoviesRepository trendingMoviesRepository;
   StreamController<MovieModel> movieStream = StreamController();
+
+  TrendingMoviesBloc({TrendingMoviesRepository? trendingMoviesRepository})
+      : trendingMoviesRepository =
+            trendingMoviesRepository ?? TrendingMoviesRepository();
 
   @override
   void dispose() {
