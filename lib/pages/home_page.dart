@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../utils/string_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
 import '../utils/measures_constants.dart';
+import 'about_page.dart';
 import 'home_body_content.dart';
 
 class Home extends StatefulWidget {
@@ -19,10 +21,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final List<Widget> pages = [];
+  int index = 0;
+  late bool _searchBarVisible;
+
   @override
   void initState() {
     super.initState();
+    _searchBarVisible = true;
     widget.bloc.fetchTrendingMovies();
+    pages.add(
+      HomeBodyContent(
+        bloc: widget.bloc,
+      ),
+    );
+    pages.add(
+      AboutPage(),
+    );
   }
 
   @override
@@ -50,41 +65,67 @@ class _HomeState extends State<Home> {
                 top: MeasuresConstants.textFieldPaddingTop,
                 left: MeasuresConstants.textFieldPaddingLeft,
               ),
-              child: SizedBox(
-                child: TextField(
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: InputDecoration(
-                    isDense: true,
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.only(
-                        right: MeasuresConstants.rightPaddingTexFieldIcon,
+              child: Visibility(
+                visible: _searchBarVisible,
+                child: SizedBox(
+                  child: TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.only(
+                          right: MeasuresConstants.rightPaddingTexFieldIcon,
+                        ),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.blue,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.blue,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                      ),
-                    ),
+                    onSubmitted: (value) {
+                      widget.bloc.searchMovies(value);
+                    },
                   ),
-                  onSubmitted: (value) {
-                    widget.bloc.searchMovies(value);
-                  },
+                  width: MeasuresConstants.textFieldSixedBoxWidth,
+                  height: MeasuresConstants.textFieldSixedBoxHeight,
                 ),
-                width: MeasuresConstants.textFieldSixedBoxWidth,
-                height: MeasuresConstants.textFieldSixedBoxHeight,
               ),
             )
           ],
         ),
       ),
-      body: HomeBodyContent(
-        bloc: widget.bloc,
+      body: pages[index],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        unselectedItemColor: Colors.grey.shade400,
+        currentIndex: index,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+            ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+            ),
+            label: "About",
+          ),
+        ],
+        onTap: (i) {
+          setState(() {
+            index = i;
+            _searchBarVisible = i == 0;
+          });
+        },
       ),
     );
   }

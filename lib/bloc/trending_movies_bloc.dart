@@ -6,7 +6,7 @@ import '../models/movie_model.dart';
 
 class TrendingMoviesBloc extends ITrendingMovies {
   final TrendingMoviesRepository trendingMoviesRepository;
-  StreamController<MovieModel> movieStream = StreamController();
+  StreamController<MovieModel> movieStream = StreamController.broadcast();
 
   TrendingMoviesBloc({TrendingMoviesRepository? trendingMoviesRepository})
       : trendingMoviesRepository =

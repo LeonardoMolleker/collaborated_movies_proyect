@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'bloc/trending_movies_bloc.dart';
 import 'pages/home_page.dart';
 
