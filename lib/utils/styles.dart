@@ -11,7 +11,7 @@ abstract class Styles {
     color: Colors.indigo.shade800,
   );
   static final TextStyle cardSubtitleTextStyle = TextStyle(
-    fontSize: Constants.cardSubitleFontSize,
+    fontSize: Constants.cardSubtitleFontSize,
     fontWeight: FontWeight.w400,
     color: Colors.indigo.shade700,
   );
