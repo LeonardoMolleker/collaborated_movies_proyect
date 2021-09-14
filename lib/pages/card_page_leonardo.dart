@@ -7,15 +7,15 @@ class CardPageL extends StatelessWidget {
   final String name;
   final String position;
   final String srcImage;
-  final String number;
   final String mail;
+  final String linkedIn;
 
   CardPageL({
     this.name = "Leonardo Molleker",
     this.position = "College Trainee",
     this.srcImage = "assets/images/profile.jpg",
-    this.number = "+54 9 249 4208051",
-    this.mail = "leonardo.molleker@globant.com",
+    this.mail = "lmolleker.development@gmail.com",
+    this.linkedIn = 'www.linkedin.com/in/leonardo-molleker',
   });
 
   @override
@@ -100,14 +100,14 @@ class CardPageL extends StatelessWidget {
                 color: Colors.yellowAccent,
               ),
               title: Text(
-                number,
+                linkedIn,
                 style: TextStyle(
                   fontSize: Constants.cardFontSize,
                   color: Colors.yellowAccent,
                 ),
               ),
               subtitle: Text(
-                Constants.subtitleCardPhone,
+                Constants.subtitleCardLinkedIn,
                 style: TextStyle(
                   fontSize: Constants.cardFontSize,
                   color: Colors.yellowAccent,

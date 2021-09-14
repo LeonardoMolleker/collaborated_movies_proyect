@@ -1,4 +1,5 @@
 abstract class Constants {
+  static const double cardPaddingExtraLarge = 40.0;
   static const double cardPaddingLarge = 30.0;
   static const double cardPaddingMedium = 20.0;
   static const double cardPaddingSmall = 15.0;
@@ -10,7 +11,7 @@ abstract class Constants {
   static const String cardCircleAvatarFallbackPhotoLink =
       'assets/images/businessman.png';
   static const double cardTitleFontSize = 39;
-  static const double cardSubitleFontSize = 24;
+  static const double cardSubtitleFontSize = 24;
   static const double cardSecondaryTextsFontSize = 18;
   static const double cardButtonFontSize = 18;
   static const double cardDividerThickness = 2;
@@ -35,6 +36,13 @@ abstract class Constants {
   static const double borderRadius = 10.0;
   static const double dividerThickness = 2.0;
   static const String subtitleCardMail = "E-mail";
-  static const String subtitleCardPhone = "Cell phone";
+  static const String subtitleCardLinkedIn = "LinkedIn";
   static const double circleAvatarPaddingTop = 10.0;
+  static const String userName = "Juliana Dimeglio";
+  static const String userJob = "Flutter college trainee";
+  static const String userEmail = "julidimeglio71@gmail.com";
+  static const String userLinkedIn =
+      "https://www.linkedin.com/in/julianadimeglio";
+  static const String userImage = "assets/images/avatar.jpeg";
+  static const double padding = 5;
 }

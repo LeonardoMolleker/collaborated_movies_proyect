@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/constants.dart';
 import '../utils/styles.dart';
 
@@ -23,22 +22,27 @@ class SimpleBusinessCardJ extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundImage: AssetImage(
-                "assets/images/avatar.jpeg",
+                Constants.userImage,
               ),
               backgroundColor: Colors.red,
               radius: Constants.radius,
             ),
-            Text(
-              'Juliana Dimeglio',
-              style: TextStyle(
-                fontSize: Constants.nameFontSize,
-                fontWeight: FontWeight.bold,
-                foreground: Paint()..shader = linearGradient,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Constants.padding,
               ),
-              textAlign: TextAlign.center,
+              child: Text(
+                Constants.userName,
+                style: TextStyle(
+                  fontSize: Constants.nameFontSize,
+                  fontWeight: FontWeight.bold,
+                  foreground: Paint()..shader = linearGradient,
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
             Text(
-              'Flutter college trainee',
+              Constants.userJob,
               style: TextStyle(
                 fontSize: Constants.textFontSize,
                 color: Colors.black,
@@ -47,14 +51,26 @@ class SimpleBusinessCardJ extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Text(
-              'juliana.dimeglio@globant.com',
+              Constants.userEmail,
               style: TextStyle(
                 decoration: TextDecoration.underline,
                 fontWeight: FontWeight.bold,
                 decorationColor: Colors.indigo.shade900,
-                decorationThickness: 1.5,
                 fontSize: Constants.emailFontSize,
                 color: Colors.black,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: Constants.padding,
+              ),
+              child: Text(
+                Constants.userLinkedIn,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: Constants.cardFontSize,
+                  color: Colors.black,
+                ),
               ),
             ),
           ],

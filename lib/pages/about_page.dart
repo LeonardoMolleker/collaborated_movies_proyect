@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'card_page_jp.dart';
-import 'card_page_l.dart';
-import 'card_page_j.dart';
+import 'card_page_juan_pablo.dart';
+import 'card_page_leonardo.dart';
+import 'card_page_juliana.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);
