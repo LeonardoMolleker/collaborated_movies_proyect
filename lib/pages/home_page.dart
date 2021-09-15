@@ -42,90 +42,92 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(
-          MeasuresConstants.appBarHeight,
-        ),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: MeasuresConstants.logoPaddingTop,
-              ),
-              child: Image.asset(
-                widget.srcImage,
-                height: MeasuresConstants.logoHeight,
-                width: MeasuresConstants.logoWidth,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: MeasuresConstants.textFieldPaddingTop,
-                left: MeasuresConstants.textFieldPaddingLeft,
-              ),
-              child: Visibility(
-                visible: _searchBarVisible,
-                child: SizedBox(
-                  child: TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.only(
-                          right: MeasuresConstants.rightPaddingTexFieldIcon,
-                        ),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ),
-                    onSubmitted: (value) {
-                      widget.bloc.searchMovies(value);
-                    },
-                  ),
-                  width: MeasuresConstants.textFieldSixedBoxWidth,
-                  height: MeasuresConstants.textFieldSixedBoxHeight,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(
+            MeasuresConstants.appBarHeight,
+          ),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: MeasuresConstants.logoPaddingTop,
+                ),
+                child: Image.asset(
+                  widget.srcImage,
+                  height: MeasuresConstants.logoHeight,
+                  width: MeasuresConstants.logoWidth,
                 ),
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: MeasuresConstants.textFieldPaddingTop,
+                  left: MeasuresConstants.textFieldPaddingLeft,
+                ),
+                child: Visibility(
+                  visible: _searchBarVisible,
+                  child: SizedBox(
+                    child: TextField(
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                        isDense: true,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(
+                            right: MeasuresConstants.rightPaddingTexFieldIcon,
+                          ),
+                          child: Icon(
+                            Icons.search,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                      onSubmitted: (value) {
+                        widget.bloc.searchMovies(value);
+                      },
+                    ),
+                    width: MeasuresConstants.textFieldSizedBoxWidth,
+                    height: MeasuresConstants.textFieldSizedBoxHeight,
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
-      ),
-      body: pages[index],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        unselectedItemColor: Colors.grey.shade400,
-        currentIndex: index,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
+        body: pages[index],
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Theme.of(context).backgroundColor,
+          unselectedItemColor: Colors.grey.shade400,
+          currentIndex: index,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: StringConstants.homeText,
             ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+              ),
+              label: StringConstants.aboutText,
             ),
-            label: "About",
-          ),
-        ],
-        onTap: (i) {
-          setState(() {
-            index = i;
-            _searchBarVisible = i == 0;
-          });
-        },
+          ],
+          onTap: (i) {
+            setState(() {
+              index = i;
+              _searchBarVisible = i == 0;
+            });
+          },
+        ),
       ),
     );
   }

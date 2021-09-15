@@ -7,7 +7,7 @@ abstract class StringConstants {
   static const String searchMoviesEndpoint = "search/movie?query=";
   static const String uriPosterImage = "https://image.tmdb.org/t/p/original";
   static const String defaultLogo = "assets/tmdb_logo.png";
-  static const String defaultPoster = "assets/default-thumb.png";
+  static const String defaultPoster = "assets/default_thumb.png";
   static const String textFieldLabel = "Search movies";
   static const String exceptionText = "Failed to get data";
   static const String emptyString = "";
@@ -23,4 +23,9 @@ abstract class StringConstants {
   static const String defaultOverview = "none";
   static const String exampleQuery = "cruella";
   static const String defaultGoBackButtonText = "Go back";
+  static const String textSearchNotFound = "Sorry, no movies found";
+  static const String imageSearchNotFound =
+      "assets/images/search_not_found.png";
+  static const String homeText = "Home";
+  static const String aboutText = "About";
 }
