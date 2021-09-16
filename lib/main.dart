@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.black,
       ),
       home: Home(
         bloc: _bloc,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../utils/string_constants.dart';
 import '../utils/measures_constants.dart';
 import '../bloc/trending_movies_bloc.dart';
 import 'movie_list_builder.dart';
@@ -8,14 +8,14 @@ class HomeBodyContent extends StatefulWidget {
   final TrendingMoviesBloc bloc;
   final double childAspectRatio;
   final int crossAxisCount;
-  final double mainAxisSpacement;
+  final double mainAxisSpace;
 
   const HomeBodyContent({
     Key? key,
     required this.bloc,
     this.childAspectRatio = MeasuresConstants.defaultChildAspectRatio,
     this.crossAxisCount = MeasuresConstants.defaultCrossAxisCount,
-    this.mainAxisSpacement = MeasuresConstants.gridMainAxisSpacement,
+    this.mainAxisSpace = MeasuresConstants.gridMainAxisSpacing,
   }) : super(key: key);
 
   @override
@@ -35,18 +35,42 @@ class _HomeBodyContentState extends State<HomeBodyContent> {
       stream: widget.bloc.stream,
       builder: (
         context,
-        snapshot,
+        AsyncSnapshot snapshot,
       ) {
         return snapshot.hasData
-            ? GridView.count(
-                mainAxisSpacing: widget.mainAxisSpacement,
-                childAspectRatio: widget.childAspectRatio,
-                crossAxisCount: widget.crossAxisCount,
-                children: buildList(
-                  context,
-                  snapshot,
-                ),
-              )
+            ? snapshot.data.results.isNotEmpty
+                ? GridView.count(
+                    mainAxisSpacing: widget.mainAxisSpace,
+                    childAspectRatio: widget.childAspectRatio,
+                    crossAxisCount: widget.crossAxisCount,
+                    children: buildList(
+                      context,
+                      snapshot,
+                    ),
+                  )
+                : SingleChildScrollView(
+                    physics: NeverScrollableScrollPhysics(),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Image(
+                            image: AssetImage(
+                              StringConstants.imageSearchNotFound,
+                            ),
+                          ),
+                          Text(
+                            StringConstants.textSearchNotFound,
+                            style: TextStyle(
+                              color: Colors.indigoAccent,
+                              fontSize:
+                                  MeasuresConstants.fontSizeSearchNotFound,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
             : Center(
                 child: CircularProgressIndicator(),
               );
